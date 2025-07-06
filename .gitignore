@@ -1,2 +1,12 @@
-__pycache__
-myenv
+__pycache__/
+*.py[cod]
+*.db
+
+
+.env
+myenv/
+
+
+.vscode/
+
+.DS_Store

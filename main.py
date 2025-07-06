@@ -1,38 +1,39 @@
-from fastapi import FastAPI
+# import random
+# import asyncio
+# import aiosmtplib
+# from email.message import EmailMessage
 
-from pydantic import BaseModel
-from typing import Optional
+# async def send_otp_email():
+#     otp=""
+#     for i in range(5):
+#         otp += str(random.randint(0, 9))
 
-from typing import Union
+#       # Input email
+#     to_mail = input("Enter your email address: ")
+
+#     # Email content
+#     msg = EmailMessage()
+#     msg['Subject'] = "OTP Verification"
+#     msg['From'] = "kamaljungkarki13579@gmail.com"
+#     msg['To'] = to_mail
+#     msg.set_content(f"Your OTP is: {otp}")
+
+#     # Send email using aiosmtplib
+#     server = aiosmtplib.SMTP(hostname='smtp.gmail.com', port=465, use_tls=True)
+#     await server.connect()
+#     await server.login("kamaljungkarki13579@gmail.com", "lpgcdftcldjvrnlx")
+#     await server.send_message(msg)
+#     await server.quit()
+
+#     print("OTP sent successfully to " + to_mail)
+
+#     # Verify OTP
+#     input_otp = input("Enter the OTP sent to your email: ")
+#     if input_otp == otp:
+#         print("OTP verified successfully!")
+#     else:
+#         print("Invalid OTP. Please try again.")
 
 
-app = FastAPI()
-
-
-@app.get("/blogs")
-def blogslist(limit= 10, published: bool = True, sort: str = "newest"):
-    if published:
-        return {"data": f"{limit} is the blogs of that number. And It is {published}"}
-    else:
-        return {"data": "This is the blogs section of no blogs"}
-
-
-@app.get("/blogs/unpublished")
-def unpublished_blogs():
-    return {"data": {"his is the unpublished blogs section"}}
-
-@app.get("/blogs/{id}")
-def eachblog(id:int):
-    return {"data": "This is the blogs associate with id " + str(id)}
-
-
-# body request 
-class Blog(BaseModel):
-    title: str
-    body: str
-    published: Optional[bool] = None
-
-
-@app.post("/blogs")
-def create_blog(blog: Blog):
-    return {"data": "Blog created successfully", "blog": blog}
+# # Run the async function
+# asyncio.run(send_otp_email())
